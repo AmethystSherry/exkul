@@ -1,4 +1,5 @@
-import React, { useMemo, useState } from 'react';
+import React, { useMemo, useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import {
   Search,
   ChevronLeft,
@@ -84,9 +85,19 @@ const downloadCSV = (csvText, filename) => {
 };
 
 const AttendanceSchedule = () => {
-  const [activeTab, setActiveTab] = useState('attendance');
+  const [searchParams] = useSearchParams();
+  const [activeTab, setActiveTab] = useState(searchParams.get('tab') || 'attendance');
   const [searchQuery, setSearchQuery] = useState('');
-
+  
+  useEffect(() => {
+    const currentTab = searchParams.get('tab');
+    if (currentTab === 'schedule') {
+      setActiveTab('schedule');
+    } else if (currentTab === 'attendance') {
+      setActiveTab('attendance');
+    }
+  }, [searchParams]);
+  
   // Attendance state
   const [attendanceRows] = useState(initialAttendanceRows);
   const [attendancePage, setAttendancePage] = useState(1);

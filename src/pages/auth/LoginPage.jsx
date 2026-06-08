@@ -65,10 +65,10 @@ const LoginPage = () => {
           <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/30 to-transparent"></div>
           <div className="absolute bottom-10 left-10 right-10 flex flex-col gap-2">
             <h1 className="text-white text-4xl font-bold leading-tight tracking-tight">
-              Manajemen <br /> Ekstrakurikuler Digital
+              Digital Extracurricular <br /> Management
             </h1>
             <p className="text-gray-100 text-base leading-relaxed max-w-xl opacity-90">
-              Platform terintegrasi untuk mengelola pendaftaran, absensi, dan perkembangan kegiatan ekstrakurikuler siswa secara efisien dan real-time di SMP Telkom Purwokerto.
+              An integrated platform for efficient, real-time management of student extracurricular registration, attendance, and performance tracking at SMP Telkom Purwokerto.
             </p>
           </div>
         </motion.div>
@@ -82,13 +82,13 @@ const LoginPage = () => {
         >
           <Link to="/" className="flex items-center gap-2 text-gray-700 hover:text-gray-900 w-fit transition-colors mb-10">
             <ArrowLeft size={18} strokeWidth={1.5} />
-            <span className="text-[14px] font-medium">Kembali ke Beranda</span>
+            <span className="text-[14px] font-medium">Back to Home</span>
           </Link>
 
           <div className="flex flex-col gap-2 mb-8">
-            <h2 className="text-[32px] font-semibold text-gray-900 tracking-tight">Selamat Datang</h2>
+            <h2 className="text-[32px] font-semibold text-gray-900 tracking-tight">Welcome Back</h2>
             <p className="text-[15px] text-gray-500">
-              Silakan masuk dengan akun Anda untuk melanjutkan ke dashboard.
+              Please log in with your account to continue to the dashboard.
             </p>
           </div>
 
@@ -100,7 +100,7 @@ const LoginPage = () => {
 
           <form onSubmit={handleLogin} className="flex flex-col gap-5">
             <div className="flex flex-col gap-2">
-              <label className="text-[14px] font-medium text-gray-800">Email/username</label>
+              <label className="text-[14px] font-medium text-gray-800">Email/Username</label>
               <input
                 type="text"
                 placeholder="Enter your email or username"

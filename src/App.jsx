@@ -6,6 +6,7 @@ import CoordinatorLayout from './components/layout/CoordinatorLayout';
 import CoordinatorDashboard from './pages/koordinator/CoordinatorDashboard';
 import UserManagement from './pages/koordinator/UserManagement';
 import AcademicPeriods from './pages/koordinator/AcademicPeriods';
+import RegisterExtracurricularCoordinator from './pages/koordinator/RegisterExtracurricular';
 import ExtracurricularManagement from './pages/koordinator/ExtracurricularManagement';
 import RoomManagement from './pages/koordinator/RoomManagement';
 import Reports from './pages/koordinator/Reports';
@@ -19,8 +20,9 @@ import MentorSettings from './pages/mentor/Settings';
 import StudentLayout from './components/layout/StudentLayout';
 import StudentDashboard from './pages/student/StudentDashboard';
 import StudentAttendanceSchedule from './pages/student/AttendanceSchedule';
+import TalentAssessment from './pages/student/TalentAssessment';
 import StudentSettings from './pages/student/Settings';
-import RegisterExtracurricular from './pages/student/RegisterExtracurricular';
+import RegisterExtracurricularStudent from './pages/student/RegisterExtracurricular';
 import ParentLayout from './components/layout/ParentLayout';
 import ParentDashboard from './pages/parent/ParentDashboard';
 import Attendance from './pages/parent/Attendance';
@@ -37,25 +39,20 @@ function App() {
         {/* Private Routes for Coordinators (Wrapped by Layout) */}
         <Route path="/koordinator" element={<CoordinatorLayout />}>
           <Route index element={<CoordinatorDashboard />} />
-
           {/* /koordinator/dashboard */}
           <Route path="dashboard" element={<CoordinatorDashboard />} />
-
           {/* /koordinator/users */}
           <Route path="users" element={<UserManagement />} />
-
           {/* /koordinator/academic-periods */}
           <Route path="academic-periods" element={<AcademicPeriods />} />
-
+          {/* /koordinator/register-extracurricular */}
+          <Route path="register-extracurricular" element={<RegisterExtracurricularCoordinator />} />
           {/* /koordinator/extracurricular */}
           <Route path="extracurricular" element={<ExtracurricularManagement />} />
-
           {/* /koordinator/room-management */}
           <Route path="room-management" element={<RoomManagement />} />
-
           {/* /koordinator/reports */}
           <Route path="reports" element={<Reports />} />
-
           {/* /koordinator/members */}
           <Route path="members" element={<MembersCoordinator />} />
 
@@ -66,16 +63,12 @@ function App() {
           <Route index element={<MentorDashboard />} />
           {/* /mentor/dashboard */}
           <Route path="dashboard" element={<MentorDashboard />} />
-
           {/* /mentor/members */}
           <Route path="members" element={<MembersMentor />} />
-
           {/* /mentor/reports */}
           <Route path="reports" element={<MentorReports />} />
-
           {/* /mentor/attendance-schedule */}
           <Route path="attendance-schedule" element={<AttendanceSchedule />} />
-
           {/* /mentor/settings */}
           <Route path="settings" element={<MentorSettings />} />
         </Route>
@@ -90,7 +83,9 @@ function App() {
           {/* /student/settings */}
           <Route path="settings" element={<StudentSettings />} />
           {/* /student/register-extracurricular */}
-          <Route path="register-extracurricular" element={<RegisterExtracurricular />} />
+          <Route path="register-extracurricular" element={<RegisterExtracurricularStudent />} />
+          {/* /student/talent-assessment */}
+          <Route path="talent-assessment" element={<TalentAssessment />} />
         </Route>
 
         {/* Private Routes for Parents (Wrapped by Layout) */}

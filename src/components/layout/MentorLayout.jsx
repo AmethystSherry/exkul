@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router-dom';
-import { LayoutGrid, Users, CalendarDays, FileText, Settings, LogOut, Bell, Search } from 'lucide-react';
+import { LayoutGrid, Users, CalendarDays, FileText, Settings, LogOut, Bell, BellOff } from 'lucide-react';
 import ExkulLogo from '../../assets/exkul-logo.svg';
 
 const MentorLayout = () => {
   const location = useLocation();
   const navigate = useNavigate();
+
+  const [showNotifications, setShowNotifications] = useState(false);
+  const notificationRef = useRef(null);
 
   const [userProfile, setUserProfile] = useState({
     firstName: 'Kim',
@@ -13,6 +16,18 @@ const MentorLayout = () => {
     email: 'kimjiwon@gmail.com',
     avatar: 'https://ui-avatars.com/api/?name=Kim+Jiwon&background=111827&color=fff'
   });
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (notificationRef.current && !notificationRef.current.contains(event.target)) {
+        setShowNotifications(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const getHeaderInfo = () => {
     switch (location.pathname) {
@@ -209,14 +224,38 @@ const MentorLayout = () => {
             </div>
 
             <div className="flex items-center gap-4 ml-auto">
-              <button className="w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 text-gray-500 hover:bg-gray-50 transition-colors cursor-pointer">
-                <Bell size={18} />
-              </button>
-              <button className="w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 text-gray-500 hover:bg-gray-50 transition-colors cursor-pointer">
-                <Search size={18} />
-              </button>
+              
+              <div className="relative" ref={notificationRef}>
+                <button 
+                  onClick={() => setShowNotifications(!showNotifications)}
+                  className="w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 text-gray-500 hover:bg-gray-50 transition-colors cursor-pointer"
+                >
+                  <Bell size={18} />
+                </button>
 
-              <div className="flex items-center gap-3 ml-2 cursor-pointer">
+                {showNotifications && (
+                  <div className="absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-lg border border-gray-100 z-50 overflow-hidden flex flex-col">
+                    <div className="p-4 border-b border-gray-100 bg-gray-50/50 shrink-0">
+                      <h3 className="text-base font-medium text-gray-900">Notification</h3>
+                    </div>
+                    
+                    <div className="flex-1 overflow-y-auto max-h-100 p-8 flex flex-col items-center justify-center text-center">
+                      <div className="w-16 h-16 bg-[#FEF2F2] rounded-2xl flex items-center justify-center mb-4">
+                        <BellOff size={28} className="text-[#C1200C]" />
+                      </div>
+                      <h4 className="text-lg font-semibold text-gray-900 mb-2">No Notifications Yet</h4>
+                      <p className="text-sm text-gray-500 leading-relaxed">
+                        You're all caught up. New notifications will appear here when there's an update.
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              <div 
+                className="flex items-center gap-3 ml-2 cursor-pointer hover:bg-gray-50 p-2 rounded-xl transition-colors"
+                onClick={() => navigate('/mentor/settings')}
+              >
                 <div className="w-10 h-10 rounded-xl bg-gray-800 flex items-center justify-center text-white overflow-hidden shrink-0">
                   <img
                     src={userProfile.avatar}

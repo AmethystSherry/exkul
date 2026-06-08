@@ -15,8 +15,8 @@ const Navbar = () => {
       </div>
 
       <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center gap-10">
-        <a href="#fitur" className="text-base font-medium text-gray-700 hover:text-[#C1200C] transition-colors">Fitur</a>
-        <a href="#cara-kerja" className="text-base font-medium text-gray-700 hover:text-[#C1200C] transition-colors">Cara Kerja</a>
+        <a href="#fitur" className="text-base font-medium text-gray-700 hover:text-[#C1200C] transition-colors">Features</a>
+        <a href="#cara-kerja" className="text-base font-medium text-gray-700 hover:text-[#C1200C] transition-colors">How It Works</a>
         <a href="#faq" className="text-base font-medium text-gray-700 hover:text-[#C1200C] transition-colors">FAQ</a>
       </div>
 
@@ -26,13 +26,13 @@ const Navbar = () => {
           className="text-base font-medium py-2 px-6 rounded-lg h-auto"
           onClick={() => navigate('/register')}
         >
-          Register
+          Sign Up
         </Button>
         <Button
           className="bg-[#C1200C] hover:bg-[#A31B0A] shadow-none py-2 px-6 rounded-lg text-base h-auto text-white"
           onClick={() => navigate('/login')}
         >
-          Login
+          Sign In
         </Button>
       </div>
     </nav>

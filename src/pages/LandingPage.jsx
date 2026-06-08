@@ -4,6 +4,9 @@ import Footer from '../components/layout/Footer';
 import MainPicture from '../assets/main-picture-landing.svg';
 import { ClipboardList, Clock, FileText, Calendar, TrendingUp, Plus, Minus } from 'lucide-react';
 import { motion } from 'framer-motion';
+import HowItWork1 from '../assets/how-it-work-1-pictures.svg';
+import HowItWork2 from '../assets/how-it-work-2-pictures.svg';
+import HowItWork3 from '../assets/how-it-work-3-pictures.svg';
 
 const FadeIn = ({ children, delay = 0, y = 40, className = "w-full" }) => {
   return (
@@ -21,24 +24,24 @@ const FadeIn = ({ children, delay = 0, y = 40, className = "w-full" }) => {
 
 const faqData = [
   {
-    question: "Siapa saja yang dapat menggunakan sistem ini?",
-    answer: "Sistem ini dapat digunakan oleh siswa, pembina ekstrakurikuler, koordinator ekskul, orang tua, serta pihak sekolah yang terlibat dalam pengelolaan kegiatan ekstrakurikuler."
+    question: "Who Can Use This System?",
+    answer: "This system can be used by students, extracurricular instructors, coordinators, parents, and school staff involved in managing extracurricular activities."
   },
   {
-    question: "Apakah pendaftaran ekskul dilakukan secara online?",
-    answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    question: "Is extracurricular registration done online?",
+    answer: "Yes. Students can browse available extracurricular activities and submit their registrations directly through the system during the registration period opened by the coordinator."
   },
   {
-    question: "Bagaimana pembina melakukan absensi siswa?",
-    answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    question: "How do instructors take student attendance?",
+    answer: "Mentors can record student attendance digitally during each session by marking students as Present, Excused, or Absent through the attendance management feature."
   },
   {
-    question: "Apakah orang tua bisa memantau kegiatan siswa?",
-    answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    question: "Can parents monitor their child's activities?",
+    answer: "Yes. Parents can access their account to view their child's attendance records, extracurricular schedules, activity reports, and participation status."
   },
   {
-    question: "Apakah laporan kegiatan dibuat otomatis?",
-    answer: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+    question: "Are activity reports generated automatically?",
+    answer: "No. Activity reports are submitted by mentors after extracurricular activities are completed. Coordinators can then review, approve, or request revisions to the submitted reports."
   }
 ];
 
@@ -54,15 +57,15 @@ const LandingPage = () => {
       <Navbar />
 
       <main className="grow">
-        
+
         {/* Section 1: Hero Text Area */}
         <FadeIn>
           <section className="w-full px-12 pt-16 pb-12 flex flex-col gap-2">
             <h1 className="text-[64px] font-bold leading-[1.1] tracking-tight text-gray-900 max-w-4xl">
-              Manajemen <br /> Ekstrakurikuler Digital
+              Digital <br /> Extracurricular Management
             </h1>
             <p className="text-lg text-gray-500 max-w-2xl mt-4">
-              Kelola pendaftaran, absensi, jadwal, hingga laporan ekstrakurikuler siswa dalam satu platform yang terintegrasi, cepat, dan transparan.
+              Manage registrations, attendance, schedules, and student extracurricular reports all in one integrated, fast, and transparent platform.
             </p>
           </section>
         </FadeIn>
@@ -70,9 +73,9 @@ const LandingPage = () => {
         {/* Section 2: Red Box / Stats Bar */}
         <FadeIn delay={0.2} y={20}>
           <div className="w-full bg-[#C1200C] py-3 flex items-center justify-center gap-3">
-             <p className="text-white text-sm font-medium">Ekstrakurikuler Aktif</p>
-             <span className="text-white text-sm">•</span>
-             <p className="text-white text-sm font-medium">Pantau Perkembangan Siswa</p>
+            <p className="text-white text-sm font-medium">Active Extracurriculars</p>
+            <span className="text-white text-sm">•</span>
+            <p className="text-white text-sm font-medium">Track Student Progress</p>
           </div>
         </FadeIn>
 
@@ -80,9 +83,9 @@ const LandingPage = () => {
         <FadeIn delay={0.3}>
           <section className="w-full px-6">
             <div className="w-full h-168">
-              <img 
-                src={MainPicture} 
-                alt="SMP Telkom Purwokerto Students" 
+              <img
+                src={MainPicture}
+                alt="SMP Telkom Purwokerto Students"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -91,20 +94,20 @@ const LandingPage = () => {
 
         {/* Section 4: Fitur Exkul */}
         <section id="fitur" className="w-full px-12 pt-25 pb-25 flex flex-col gap-18">
-          
+
           <FadeIn>
             <div className="flex flex-col items-center text-center gap-5">
               <div className="inline-flex items-center justify-center rounded-full bg-[#C1200C] px-5 py-1.5 ring-1 ring-[#C1200C] ring-offset-2">
-                <span className="text-white text-sm font-medium tracking-wide">Fitur Exkul</span>
+                <span className="text-white text-sm font-medium tracking-wide">Exkul Features</span>
               </div>
               <h2 className="text-5xl font-bold text-gray-900 leading-tight">
-                Semua yang Dibutuhkan Ada <br /> dalam Satu Platform.
+                Everything You Need <br /> in One Platform.
               </h2>
             </div>
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
+
             <div className="flex flex-col gap-6">
               <FadeIn delay={0.1}>
                 <div className="bg-white border border-gray-200 rounded-3xl p-8 flex flex-col items-start shadow-sm hover:shadow-md transition-shadow min-h-75">
@@ -112,9 +115,9 @@ const LandingPage = () => {
                     <ClipboardList size={24} />
                   </div>
                   <div className="mt-auto pt-10">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">Pendaftaran Digital</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">Digital Registration</h3>
                     <p className="text-gray-500 text-sm leading-relaxed">
-                      Siswa daftar ekskul online. Status real-time, tanpa kertas, kapan saja.
+                      Students can register for extracurriculars online. Real-time status updates, paperless, anytime.
                     </p>
                   </div>
                 </div>
@@ -125,9 +128,9 @@ const LandingPage = () => {
                     <Calendar size={24} />
                   </div>
                   <div className="mt-auto pt-10">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">Jadwal Terpusat</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">Centralized Schedules</h3>
                     <p className="text-gray-500 text-sm leading-relaxed">
-                      Semua jadwal ekskul dalam satu kalender yang bisa diakses semua pihak.
+                      All extracurricular schedules in one calendar accessible to all parties.
                     </p>
                   </div>
                 </div>
@@ -141,9 +144,9 @@ const LandingPage = () => {
                     <Clock size={24} />
                   </div>
                   <div className="mt-auto pt-10">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">Absensi Cepat</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">Quick Attendance</h3>
                     <p className="text-gray-500 text-sm leading-relaxed">
-                      Pembina catat kehadiran per sesi dalam hitungan menit. Orang tua bisa pantau.
+                      Instructors can record attendance per session in minutes. Parents can monitor.
                     </p>
                   </div>
                 </div>
@@ -157,9 +160,9 @@ const LandingPage = () => {
                     <FileText size={24} />
                   </div>
                   <div className="mt-auto pt-10">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">Laporan Terstandar</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">Standardized Reports</h3>
                     <p className="text-gray-500 text-sm leading-relaxed">
-                      Template laporan seragam untuk semua ekskul. Koordinator approve langsung.
+                      Uniform report templates for all extracurriculars. Coordinators approve directly.
                     </p>
                   </div>
                 </div>
@@ -170,9 +173,9 @@ const LandingPage = () => {
                     <TrendingUp size={24} />
                   </div>
                   <div className="mt-auto pt-10">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">Dashboard Analitik</h3>
+                    <h3 className="text-xl font-bold text-gray-900 mb-3">Analytics Dashboard</h3>
                     <p className="text-gray-500 text-sm leading-relaxed">
-                      Ringkasan data real-time: kehadiran, anggota, dan perkembangan per ekskul.
+                      Real-time data summary: attendance, members, and progress per extracurricular.
                     </p>
                   </div>
                 </div>
@@ -183,14 +186,14 @@ const LandingPage = () => {
 
         {/* Section 5: Cara Kerja */}
         <section id="cara-kerja" className="w-full px-12 pt-25 pb-25 flex flex-col md:flex-row items-start justify-between gap-12 relative">
-          
+
           <div className="w-full md:w-5/12 sticky top-32 flex flex-col items-start gap-6">
             <FadeIn>
               <div className="inline-flex items-center justify-center rounded-full bg-[#C1200C] px-5 py-1.5 ring-1 ring-[#C1200C] ring-offset-2 mb-6">
-                <span className="text-white text-sm font-medium tracking-wide">Bagaimana Cara Kerjanya?</span>
+                <span className="text-white text-sm font-medium tracking-wide">How Does It Works?</span>
               </div>
               <h2 className="text-5xl font-bold text-gray-900 leading-tight">
-                Dari Pendaftaran Hingga <br /> Laporan, Semua Terhubung.
+                From Registration to <br /> Reporting, Everything is Connected.
               </h2>
             </FadeIn>
           </div>
@@ -198,11 +201,15 @@ const LandingPage = () => {
           <div className="w-full md:w-6/12 flex flex-col gap-20 items-end">
             <FadeIn>
               <div className="w-full max-w-168.75 h-105.25 flex flex-col gap-3">
-                <div className="w-full h-81 bg-gray-500 rounded-3xl shadow-sm shrink-0"></div>
+                <img
+                  src={HowItWork1}
+                  alt="Pilih & Daftar Ekskul"
+                  className="w-full h-81 object-cover rounded-3xl shadow-sm shrink-0 bg-gray-50"
+                />
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Pilih & Daftar Ekskul</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Select & Register for Extracurriculars</h3>
                   <p className="text-gray-500 leading-relaxed">
-                    Browse katalog ekskul, baca detail, dan daftar online. Status pendaftaran bisa dipantau real-time.
+                    Browse the extracurricular catalog, read details, and register online. Registration status can be monitored in real-time.
                   </p>
                 </div>
               </div>
@@ -210,11 +217,15 @@ const LandingPage = () => {
 
             <FadeIn>
               <div className="w-full max-w-168.75 h-105.25 flex flex-col gap-3">
-                <div className="w-full h-81 bg-gray-500 rounded-3xl shadow-sm shrink-0"></div>
+                <img
+                  src={HowItWork2}
+                  alt="Ikuti Kegiatan"
+                  className="w-full h-81 object-cover rounded-3xl shadow-sm shrink-0 bg-gray-50"
+                />
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Ikuti Kegiatan</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Participate in Activities</h3>
                   <p className="text-gray-500 leading-relaxed">
-                    Jadwal tersedia di sistem. Kehadiran dicatat digital per sesi oleh pembina.
+                    Schedules are available in the system. Attendance is recorded digitally per session by the instructor.
                   </p>
                 </div>
               </div>
@@ -222,11 +233,15 @@ const LandingPage = () => {
 
             <FadeIn>
               <div className="w-full max-w-168.75 h-105.25 flex flex-col gap-3">
-                <div className="w-full h-81 bg-gray-500 rounded-3xl shadow-sm shrink-0"></div>
+                <img
+                  src={HowItWork3}
+                  alt="Laporan & Evaluasi"
+                  className="w-full h-81 object-cover rounded-3xl shadow-sm shrink-0 bg-gray-50"
+                />
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Laporan & Evaluasi</h3>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">Reports & Evaluations</h3>
                   <p className="text-gray-500 leading-relaxed">
-                    Pembina kirim laporan terstandarisasi setiap akhir semester. Koordinator review dan setujui dalam sistem.
+                    Instructors submit standardized reports at the end of each semester. Coordinators review and approve within the system.
                   </p>
                 </div>
               </div>
@@ -236,17 +251,17 @@ const LandingPage = () => {
 
         {/* Section 6: FAQ */}
         <section id="faq" className="w-full px-12 pt-25 pb-25 flex flex-col gap-18 bg-white">
-          
+
           <FadeIn>
             <div className="flex flex-col items-center text-center gap-4">
               <div className="inline-flex items-center justify-center rounded-full bg-[#C1200C] px-5 py-1.5 ring-1 ring-[#C1200C] ring-offset-2">
                 <span className="text-white text-sm font-medium tracking-wide">FAQ</span>
               </div>
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight">
-                Pertanyaan yang Sering <br /> Diajukan
+                Frequently <br /> Asked Questions
               </h2>
               <p className="text-gray-500 text-sm max-w-md mx-auto">
-                Temukan jawaban seputar penggunaan sistem manajemen ekstrakurikuler.
+                Find answers about using the extracurricular management system.
               </p>
             </div>
           </FadeIn>
@@ -257,24 +272,22 @@ const LandingPage = () => {
 
               return (
                 <FadeIn key={index} delay={index * 0.1}>
-                  <div 
-                    className={`w-full rounded-3xl transition-all duration-300 ${
-                      isOpen ? 'bg-[#FAFAFA] p-2' : 'bg-transparent p-0'
-                    }`}
-                  >
-                    <div 
-                      className={`w-full rounded-2xl overflow-hidden transition-all duration-300 ${
-                        isOpen 
-                        ? 'bg-white border border-gray-200' 
-                        : 'bg-[#FAFAFA] border border-transparent'
+                  <div
+                    className={`w-full rounded-3xl transition-all duration-300 ${isOpen ? 'bg-[#FAFAFA] p-2' : 'bg-transparent p-0'
                       }`}
+                  >
+                    <div
+                      className={`w-full rounded-2xl overflow-hidden transition-all duration-300 ${isOpen
+                          ? 'bg-white border border-gray-200'
+                          : 'bg-[#FAFAFA] border border-transparent'
+                        }`}
                     >
-                      <button 
+                      <button
                         onClick={() => toggleFaq(index)}
                         className="w-full flex items-center justify-between px-6 py-7 text-left outline-none cursor-pointer bg-transparent"
                       >
                         <span className="text-xl font-medium text-gray-900 pr-8">{faq.question}</span>
-                        
+
                         <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors duration-300 ${isOpen ? 'bg-black text-white' : 'border border-gray-300 bg-white text-black'}`}>
                           {isOpen ? <Minus size={18} /> : <Plus size={18} />}
                         </div>

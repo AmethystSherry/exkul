@@ -76,10 +76,10 @@ const RegisterPage = () => {
           <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/30 to-transparent"></div>
           <div className="absolute bottom-10 left-10 right-10 flex flex-col gap-2">
             <h1 className="text-white text-4xl font-bold leading-tight tracking-tight">
-              Manajemen <br /> Ekstrakurikuler Digital
+              Digital Extracurricular <br /> Management
             </h1>
             <p className="text-gray-100 text-base leading-relaxed max-w-xl opacity-90">
-              Platform terintegrasi untuk mengelola pendaftaran, absensi, dan perkembangan kegiatan ekstrakurikuler siswa secara efisien dan real-time di SMP Telkom Purwokerto.
+              An integrated platform for efficient, real-time management of student extracurricular registration, attendance, and performance tracking at SMP Telkom Purwokerto.
             </p>
           </div>
         </motion.div>
@@ -93,13 +93,13 @@ const RegisterPage = () => {
         >
           <Link to="/" className="flex items-center gap-2 text-gray-700 hover:text-gray-900 w-fit transition-colors mb-10">
             <ArrowLeft size={18} strokeWidth={1.5} />
-            <span className="text-[14px] font-medium">Kembali ke Beranda</span>
+            <span className="text-[14px] font-medium">Back to Home</span>
           </Link>
 
           <div className="flex flex-col gap-2 mb-8">
-            <h2 className="text-[32px] font-semibold text-gray-900 tracking-tight">Selamat Datang</h2>
+            <h2 className="text-[32px] font-semibold text-gray-900 tracking-tight">Welcome</h2>
             <p className="text-[15px] text-gray-500">
-              Silakan Registrasi jika anda belum memiliki akun
+              Please register if you don't have an account yet
             </p>
           </div>
 
@@ -114,7 +114,7 @@ const RegisterPage = () => {
               <label className="text-[14px] font-medium text-gray-800">Email</label>
               <input 
                 type="email" 
-                placeholder="Masukkan email anda"
+                placeholder="Enter your email"
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
@@ -130,11 +130,11 @@ const RegisterPage = () => {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="text-[14px] font-medium text-gray-800">Buat Kata Sandi</label>
+              <label className="text-[14px] font-medium text-gray-800">Create Password</label>
               <div className="relative">
                 <input 
                   type={showPassword ? "text" : "password"} 
-                  placeholder="Buat kata sandi anda"
+                  placeholder="Create your password"
                   value={password}
                   onChange={(e) => {
                     setPassword(e.target.value);
@@ -158,11 +158,11 @@ const RegisterPage = () => {
             </div>
 
             <div className="flex flex-col gap-2">
-              <label className="text-[14px] font-medium text-gray-800">Konfirmasi Kata Sandi</label>
+              <label className="text-[14px] font-medium text-gray-800">Confirm Password</label>
               <div className="relative">
                 <input 
                   type={showConfirmPassword ? "text" : "password"} 
-                  placeholder="Konfirmasi kata sandi anda"
+                  placeholder="Confirm your password"
                   value={confirmPassword}
                   onChange={(e) => {
                     setConfirmPassword(e.target.value);
@@ -190,13 +190,13 @@ const RegisterPage = () => {
                 type="submit"
                 className="w-full h-14 bg-[#C1200C] hover:bg-[#A31B0A] text-white text-[16px] font-medium rounded-xl transition-colors flex items-center justify-center cursor-pointer shadow-[0_2px_10px_rgb(193,32,12,0.1)]"
               >
-                Masuk ke Dashboard
+                Register
               </button>
             </div>
           </form>
 
           <div className="mt-8 text-center text-[14px]">
-            <span className="text-gray-500">Sudah ada akun? </span>
+            <span className="text-gray-500">Already have an account? </span>
             <Link to="/login" className="font-medium text-gray-900 hover:text-[#C1200C] underline underline-offset-4 transition-colors">
               Login
             </Link>

@@ -13,28 +13,27 @@ const Footer = () => {
             className="h-8 w-auto object-contain mb-1"
           />
           <p className="text-gray-500 text-sm">
-            Sistem Manajemen Ekstrakurikuler
+            Extracurricular Management System
           </p>
         </div>
 
         <div className="flex gap-25">
           <div className="flex flex-col gap-5">
-            <h3 className="font-medium text-gray-900">Navigasi</h3>
+            <h3 className="font-medium text-gray-900">Navigation</h3>
             <ul className="flex flex-col gap-4 text-gray-500 text-sm">
-              <li><a href="#fitur" className="hover:text-gray-900 transition-colors">Fitur</a></li>
-              <li><a href="#cara-kerja" className="hover:text-gray-900 transition-colors">Cara Kerja</a></li>
+              <li><a href="#fitur" className="hover:text-gray-900 transition-colors">Features</a></li>
+              <li><a href="#cara-kerja" className="hover:text-gray-900 transition-colors">How It Works</a></li>
               <li><a href="#faq" className="hover:text-gray-900 transition-colors">FAQ</a></li>
-              <li><a href="#" className="hover:text-gray-900 transition-colors">Placeholder</a></li>
             </ul>
           </div>
 
           <div className="flex flex-col gap-5">
-            <h3 className="font-medium text-gray-900">Untuk Siapa?</h3>
+            <h3 className="font-medium text-gray-900">Who Is It For?</h3>
             <ul className="flex flex-col gap-4 text-gray-500 text-sm">
-              <li><a href="#" className="hover:text-gray-900 transition-colors">Koordinator</a></li>
-              <li><a href="#" className="hover:text-gray-900 transition-colors">Pembimbing</a></li>
-              <li><a href="#" className="hover:text-gray-900 transition-colors">Siswa</a></li>
-              <li><a href="#" className="hover:text-gray-900 transition-colors">Orang tua</a></li>
+              <li><a href="/koordinator/dashboard" className="hover:text-gray-900 transition-colors">Coordinator</a></li>
+              <li><a href="/mentor/dashboard" className="hover:text-gray-900 transition-colors">Mentor</a></li>
+              <li><a href="/student/dashboard" className="hover:text-gray-900 transition-colors">Student</a></li>
+              <li><a href="/parent/dashboard" className="hover:text-gray-900 transition-colors">Parent</a></li>
             </ul>
           </div>
 

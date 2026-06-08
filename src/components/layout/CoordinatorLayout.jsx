@@ -1,15 +1,30 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import {
   Users, Calendar, CalendarDays, FileText,
-  Settings, LogOut, Bell, Search, DoorClosed,
-  Building, UserCog, LayoutGrid
+  Settings, LogOut, Bell, BellOff, DoorClosed,
+  Building, UserCog, LayoutGrid, Ticket
 } from 'lucide-react';
 import ExkulLogo from '../../assets/exkul-logo.svg';
 
 const CoordinatorLayout = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  const [showNotifications, setShowNotifications] = useState(false);
+  const notificationRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (notificationRef.current && !notificationRef.current.contains(event.target)) {
+        setShowNotifications(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   const getHeaderInfo = () => {
     switch (location.pathname) {
@@ -28,6 +43,11 @@ const CoordinatorLayout = () => {
         return {
           title: 'Academic Periods',
           subtitle: 'Manage and organize academic periods and their active semesters'
+        };
+      case '/koordinator/register-extracurricular':
+        return {
+          title: 'Register Extracurricular',
+          subtitle: 'Track student enrollment, class, and activity participation'
         };
       case '/koordinator/extracurricular':
         return {
@@ -87,7 +107,7 @@ const CoordinatorLayout = () => {
           <div className="pt-6 pb-4 px-8 flex items-center text-[#C1200C] shrink-0">
             <img src={ExkulLogo} alt="Exkul Logo" className="h-10 w-auto origin-left transform scale-150" />
           </div>
-          
+
           <div className="px-8 mb-3 shrink-0">
             <hr className="border-gray-100" />
           </div>
@@ -123,6 +143,16 @@ const CoordinatorLayout = () => {
                     {isActive && <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#C1200C] rounded-r-sm"></div>}
                     <Calendar size={20} className={isActive ? "text-[#C1200C]" : ""} fill={isActive ? "currentColor" : "none"} />
                     <span className={`text-sm ${isActive ? "font-medium" : "font-normal"}`}>Academic Periods</span>
+                  </>
+                )}
+              </NavLink>
+
+              <NavLink to="/koordinator/register-extracurricular" className={navLinkClass}>
+                {({ isActive }) => (
+                  <>
+                    {isActive && <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#C1200C] rounded-r-sm"></div>}
+                    <Ticket size={20} className={isActive ? 'text-[#C1200C]' : ''} fill={isActive ? 'currentColor' : 'none'} />
+                    <span className={`text-sm ${isActive ? 'font-medium' : 'font-normal'}`}>Register Extracurricular</span>
                   </>
                 )}
               </NavLink>
@@ -186,12 +216,33 @@ const CoordinatorLayout = () => {
             </div>
 
             <div className="flex items-center gap-4 ml-auto">
-              <button className="w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 text-gray-500 hover:bg-gray-50 transition-colors cursor-pointer">
-                <Bell size={18} />
-              </button>
-              <button className="w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 text-gray-500 hover:bg-gray-50 transition-colors cursor-pointer">
-                <Search size={18} />
-              </button>
+              
+              <div className="relative" ref={notificationRef}>
+                <button 
+                  onClick={() => setShowNotifications(!showNotifications)}
+                  className="w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 text-gray-500 hover:bg-gray-50 transition-colors cursor-pointer"
+                >
+                  <Bell size={18} />
+                </button>
+
+                {showNotifications && (
+                  <div className="absolute right-0 mt-2 w-80 bg-white rounded-2xl shadow-lg border border-gray-100 z-50 overflow-hidden flex flex-col">
+                    <div className="p-4 border-b border-gray-100 bg-gray-50/50 shrink-0">
+                      <h3 className="text-base font-medium text-gray-900">Notification</h3>
+                    </div>
+                    
+                    <div className="flex-1 overflow-y-auto max-h-100 p-8 flex flex-col items-center justify-center text-center">
+                      <div className="w-16 h-16 bg-[#FEF2F2] rounded-2xl flex items-center justify-center mb-4">
+                        <BellOff size={28} className="text-[#C1200C]" />
+                      </div>
+                      <h4 className="text-lg font-semibold text-gray-900 mb-2">No Notifications Yet</h4>
+                      <p className="text-sm text-gray-500 leading-relaxed">
+                        You're all caught up. New notifications will appear here when there's an update.
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
 
               <div className="flex items-center gap-3 ml-2 cursor-pointer">
                 <div className="w-10 h-10 rounded-xl bg-gray-800 flex items-center justify-center text-white overflow-hidden shrink-0">

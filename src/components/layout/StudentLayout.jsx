@@ -8,8 +8,8 @@ import {
   Settings,
   LogOut,
   Bell,
-  Search,
-  ArrowRight
+  ArrowRight,
+  Ticket
 } from 'lucide-react';
 import ExkulLogo from '../../assets/exkul-logo.svg';
 
@@ -59,14 +59,16 @@ const StudentLayout = () => {
         title: 'Your extracurricular registrat...',
         time: '1 minutes ago',
         unread: true,
-        icon: <PodiumIcon className="text-[#C1200C]" size={20} strokeWidth={1.8} />
+        icon: <PodiumIcon className="text-[#C1200C]" size={20} strokeWidth={1.8} />,
+        path: '/student/register-extracurricular'
       },
       {
         id: 'n2',
         title: 'Basketball training will start i...',
         time: '20 minutes ago',
         unread: true,
-        icon: <BasketballIcon className="text-[#C1200C]" size={20} strokeWidth={1.8} />
+        icon: <BasketballIcon className="text-[#C1200C]" size={20} strokeWidth={1.8} />,
+        path: '/student/attendance-schedule?tab=schedule'
       }
     ],
     []
@@ -99,7 +101,7 @@ const StudentLayout = () => {
       const leftInsidePanel = bellCenter - panelRect.left;
 
       const caretSize = 16;
-      const min = 18; 
+      const min = 18;
       const max = panelRect.width - 18 - caretSize;
 
       const next = Math.max(min, Math.min(leftInsidePanel - caretSize / 2, max));
@@ -171,6 +173,13 @@ const StudentLayout = () => {
         aside:hover .sidebar-scroll { scrollbar-color: rgba(156, 163, 175, 0.4) transparent; }
 
         .notif-shadow { box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); }
+
+        .notif-scroll { scrollbar-width: thin; scrollbar-color: transparent transparent; transition: scrollbar-color 0.3s ease; }
+        .notif-scroll:hover { scrollbar-color: rgba(156, 163, 175, 0.4) transparent; }
+        .notif-scroll::-webkit-scrollbar { width: 4px; }
+        .notif-scroll::-webkit-scrollbar-track { background: transparent; }
+        .notif-scroll::-webkit-scrollbar-thumb { background-color: transparent; border-radius: 10px; }
+        .notif-scroll:hover::-webkit-scrollbar-thumb { background-color: rgba(156, 163, 175, 0.4); }
       `}</style>
 
       <div className="min-h-screen bg-[#F9FAFB] flex font-sans relative">
@@ -201,7 +210,7 @@ const StudentLayout = () => {
                 {({ isActive }) => (
                   <>
                     {isActive && <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#C1200C] rounded-r-sm"></div>}
-                    <Building size={20} className={isActive ? 'text-[#C1200C]' : ''} fill={isActive ? 'currentColor' : 'none'} />
+                    <Ticket size={20} className={isActive ? 'text-[#C1200C]' : ''} fill={isActive ? 'currentColor' : 'none'} />
                     <span className={`text-sm ${isActive ? 'font-medium' : 'font-normal'}`}>Register Extracurricular</span>
                   </>
                 )}
@@ -284,11 +293,15 @@ const StudentLayout = () => {
                       <div className="text-[17px] font-medium text-gray-900">Notification</div>
                     </div>
 
-                    <div className="p-3 flex flex-col gap-1 bg-white">
+                    <div className="p-2 flex flex-col gap-1 bg-white max-h-80 overflow-y-auto notif-scroll">
                       {notifications.map((n) => (
                         <div
                           key={n.id}
-                          className="flex items-center gap-4 px-3 py-3"
+                          onClick={() => {
+                            setNotifOpen(false);
+                            navigate(n.path);
+                          }}
+                          className="flex items-center gap-4 px-3 py-3 rounded-[14px] hover:bg-gray-50 cursor-pointer transition-colors"
                         >
                           <div className="w-12 h-12 rounded-[14px] border border-gray-200 bg-white flex items-center justify-center shrink-0">
                             {n.icon}
@@ -306,13 +319,9 @@ const StudentLayout = () => {
                           <div className="flex items-center gap-3 shrink-0">
                             {n.unread && <span className="w-1.5 h-1.5 rounded-full bg-[#ef4444]" />}
 
-                            <button
-                              type="button"
-                              className="w-10 h-10 rounded-[14px] border border-gray-200 bg-white flex items-center justify-center text-gray-800 hover:bg-gray-50 transition cursor-pointer"
-                              aria-label="Open notification"
-                            >
+                            <div className="w-10 h-10 rounded-[14px] border border-gray-200 bg-white flex items-center justify-center text-gray-800 transition">
                               <ArrowRight size={18} strokeWidth={1.5} />
-                            </button>
+                            </div>
                           </div>
                         </div>
                       ))}
@@ -321,11 +330,10 @@ const StudentLayout = () => {
                 )}
               </div>
 
-              <button className="w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 text-gray-500 hover:bg-gray-50 transition-colors cursor-pointer">
-                <Search size={18} />
-              </button>
-
-              <div className="flex items-center gap-3 ml-2 cursor-pointer">
+              <div
+                className="flex items-center gap-3 ml-2 cursor-pointer hover:opacity-80 transition-opacity"
+                onClick={() => navigate('/student/settings')}
+              >
                 <div className="w-10 h-10 rounded-xl bg-gray-800 flex items-center justify-center text-white overflow-hidden shrink-0">
                   <img src={userProfile.avatar} alt="Profile" className="w-full h-full object-cover" />
                 </div>

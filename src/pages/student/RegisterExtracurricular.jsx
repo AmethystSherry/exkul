@@ -188,11 +188,32 @@ const RegisterExtracurricular = () => {
   const [categoryOpen, setCategoryOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  const [activeRegistration, setActiveRegistration] = useState({
-    extracurricularName: "-",
-    registrationDate: "-",
-    status: "No Registration Active",
+  const [activeRegistration, setActiveRegistration] = useState(() => {
+    const savedRegistration = localStorage.getItem("activeRegistration");
+
+    if (savedRegistration) {
+      return JSON.parse(savedRegistration);
+    }
+
+    return {
+      extracurricularName: "-",
+      registrationDate: "-",
+      status: "No Registration Active",
+    };
   });
+
+  const handleRegister = (item) => {
+    const now = new Date();
+    const newReg = {
+      extracurricularName: item.name,
+      registrationDate: formatDateLong(now),
+      status: "Pending Approval",
+    };
+
+    setActiveRegistration(newReg);
+    localStorage.setItem("activeRegistration", JSON.stringify(newReg));
+    setSuccessOpen(true);
+  };
 
   const [successOpen, setSuccessOpen] = useState(false);
 
@@ -223,16 +244,6 @@ const RegisterExtracurricular = () => {
       return matchQ && matchCat;
     });
   }, [search, category]);
-
-  const handleRegister = (item) => {
-    const now = new Date();
-    setActiveRegistration({
-      extracurricularName: item.name,
-      registrationDate: formatDateLong(now),
-      status: "Pending Approval",
-    });
-    setSuccessOpen(true);
-  };
 
   return (
     <>
