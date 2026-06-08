@@ -15,7 +15,7 @@ const initialData = [
     members: '30 Members',
     schedule1: { day: 'Monday', time: '15:00' },
     schedule2: { day: 'Thursday', time: '15:00' },
-    location: 'Classroom 201',
+    location: 'Basketball Court',
   },
   {
     id: '2',
@@ -35,7 +35,7 @@ const initialData = [
     members: '28 Members',
     schedule1: { day: 'Friday', time: '15:00' },
     schedule2: null,
-    location: 'Classroom 201',
+    location: 'Computer Lab',
   },
   {
     id: '4',
@@ -55,7 +55,7 @@ const initialData = [
     members: '32 Members',
     schedule1: { day: 'Wednesday', time: '15:00' },
     schedule2: null,
-    location: 'Classroom 201',
+    location: 'Basketball Court',
   },
   {
     id: '6',
@@ -65,7 +65,7 @@ const initialData = [
     members: '20 Members',
     schedule1: { day: 'Thursday', time: '13:30' },
     schedule2: null,
-    location: 'Classroom 201',
+    location: 'Library',
   },
   {
     id: '7',
@@ -75,7 +75,7 @@ const initialData = [
     members: '18 Members',
     schedule1: { day: 'Saturday', time: '09:00' },
     schedule2: null,
-    location: 'Classroom 201',
+    location: 'Robotics Lab',
   },
 ];
 
@@ -282,9 +282,8 @@ const ExtracurricularManagement = () => {
 
         <div
           onClick={() => setActiveDropdown(isActive ? null : type)}
-          className={`w-full px-4 py-2.5 border rounded-xl text-sm bg-white cursor-pointer flex items-center justify-between transition-colors ${
-            isActive ? 'border-[#C1200C]' : 'border-gray-200 hover:border-gray-300'
-          } ${isPlaceholder ? 'text-gray-400' : 'text-gray-900'}`}
+          className={`w-full px-4 py-2.5 border rounded-xl text-sm bg-white cursor-pointer flex items-center justify-between transition-colors ${isActive ? 'border-[#C1200C]' : 'border-gray-200 hover:border-gray-300'
+            } ${isPlaceholder ? 'text-gray-400' : 'text-gray-900'}`}
         >
           {type === 'cat' && !isPlaceholder ? (
             <span className={`px-4 py-1.5 rounded-full text-xs font-medium inline-block whitespace-nowrap ${categoryStyles[value]}`}>
@@ -323,9 +322,8 @@ const ExtracurricularManagement = () => {
                         <div
                           key={h}
                           onClick={() => setPickerHour1(h)}
-                          className={`py-2 my-1 cursor-pointer rounded-lg transition-colors ${
-                            pickerHour1 === h ? 'bg-red-50 text-[#C1200C] font-bold text-lg' : 'text-gray-500 hover:bg-gray-50 text-sm'
-                          }`}
+                          className={`py-2 my-1 cursor-pointer rounded-lg transition-colors ${pickerHour1 === h ? 'bg-red-50 text-[#C1200C] font-bold text-lg' : 'text-gray-500 hover:bg-gray-50 text-sm'
+                            }`}
                         >
                           {h}
                         </div>
@@ -339,9 +337,8 @@ const ExtracurricularManagement = () => {
                         <div
                           key={m}
                           onClick={() => setPickerMinute1(m)}
-                          className={`py-2 my-1 cursor-pointer rounded-lg transition-colors ${
-                            pickerMinute1 === m ? 'bg-red-50 text-[#C1200C] font-bold text-lg' : 'text-gray-500 hover:bg-gray-50 text-sm'
-                          }`}
+                          className={`py-2 my-1 cursor-pointer rounded-lg transition-colors ${pickerMinute1 === m ? 'bg-red-50 text-[#C1200C] font-bold text-lg' : 'text-gray-500 hover:bg-gray-50 text-sm'
+                            }`}
                         >
                           {m}
                         </div>
@@ -371,9 +368,8 @@ const ExtracurricularManagement = () => {
                         <div
                           key={h}
                           onClick={() => setPickerHour2(h)}
-                          className={`py-2 my-1 cursor-pointer rounded-lg transition-colors ${
-                            pickerHour2 === h ? 'bg-red-50 text-[#C1200C] font-bold text-lg' : 'text-gray-500 hover:bg-gray-50 text-sm'
-                          }`}
+                          className={`py-2 my-1 cursor-pointer rounded-lg transition-colors ${pickerHour2 === h ? 'bg-red-50 text-[#C1200C] font-bold text-lg' : 'text-gray-500 hover:bg-gray-50 text-sm'
+                            }`}
                         >
                           {h}
                         </div>
@@ -387,9 +383,8 @@ const ExtracurricularManagement = () => {
                         <div
                           key={m}
                           onClick={() => setPickerMinute2(m)}
-                          className={`py-2 my-1 cursor-pointer rounded-lg transition-colors ${
-                            pickerMinute2 === m ? 'bg-red-50 text-[#C1200C] font-bold text-lg' : 'text-gray-500 hover:bg-gray-50 text-sm'
-                          }`}
+                          className={`py-2 my-1 cursor-pointer rounded-lg transition-colors ${pickerMinute2 === m ? 'bg-red-50 text-[#C1200C] font-bold text-lg' : 'text-gray-500 hover:bg-gray-50 text-sm'
+                            }`}
                         >
                           {m}
                         </div>
@@ -555,26 +550,32 @@ const ExtracurricularManagement = () => {
               <table className="w-full text-left border-separate border-spacing-0">
                 <thead>
                   <tr className="bg-[#F8F9FA]">
-                    <th className="px-6 py-4 text-sm font-semibold text-gray-900 border-l border-t border-b border-gray-200 rounded-tl-2xl rounded-bl-2xl w-[20%]">
+                    <th className="px-6 py-4 text-sm font-semibold text-gray-900 border-l border-t border-b border-gray-200 rounded-tl-2xl rounded-bl-2xl w-[16%]">
                       Extracurricular
                     </th>
-                    <th className="px-6 py-4 text-sm font-semibold text-gray-900 border-t border-b border-gray-200 w-[15%]">
+                    <th className="px-6 py-4 text-sm font-semibold text-gray-900 border-t border-b border-gray-200 w-[14%]">
                       Category
                     </th>
-                    <th className="px-6 py-4 text-sm font-semibold text-gray-900 border-t border-b border-gray-200 w-[20%]">
+                    <th className="px-6 py-4 text-sm font-semibold text-gray-900 border-t border-b border-gray-200 w-[16%]">
                       Mentor
                     </th>
-                    <th className="px-6 py-4 text-sm font-semibold text-gray-900 border-t border-b border-gray-200 w-[15%]">
+                    <th className="px-6 py-4 text-sm font-semibold text-gray-900 border-t border-b border-gray-200 w-[12%]">
                       Members
                     </th>
-                    <th className="px-6 py-4 text-sm font-semibold text-gray-900 border-t border-b border-gray-200 w-[25%]">
+                    <th className="px-6 py-4 text-sm font-semibold text-gray-900 border-t border-b border-gray-200 w-[18%]">
                       Schedule
                     </th>
-                    <th className="px-6 py-4 text-sm font-semibold text-gray-900 border-r border-t border-b border-gray-200 rounded-tr-2xl rounded-br-2xl text-center w-[5%]">
+
+                    <th className="px-6 py-4 text-sm font-semibold text-gray-900 border-t border-b border-gray-200 w-[20%]">
+                      Location
+                    </th>
+
+                    <th className="px-6 py-4 text-sm font-semibold text-gray-900 border-r border-t border-b border-gray-200 rounded-tr-2xl rounded-br-2xl text-center w-[4%]">
                       Action
                     </th>
                   </tr>
                 </thead>
+
                 <tbody>
                   {currentTableData.map((row) => (
                     <tr key={row.id} className="border-b border-gray-100 hover:bg-gray-50/50 transition-colors">
@@ -588,6 +589,10 @@ const ExtracurricularManagement = () => {
                       <td className="px-6 py-5 text-sm text-gray-600 font-normal">{row.members}</td>
                       <td className="px-6 py-5 text-sm text-gray-600 font-normal">
                         {toScheduleText(row.schedule1, row.schedule2)}
+                      </td>
+
+                      <td className="px-6 py-5 text-sm text-gray-600 font-normal">
+                        {row.location || '-'}
                       </td>
 
                       <td className="px-6 py-5 flex justify-center relative">
@@ -754,7 +759,7 @@ const ExtracurricularManagement = () => {
               label="Location"
               value={selectedLocation}
               type="loc"
-              options={["basketball court", "Robotics Lab", "Computer Lab", "Library", "Room 201"]}
+              options={["Basketball Court", "Robotics Lab", "Computer Lab", "Library", "Room 201"]}
             />
           </form>
 

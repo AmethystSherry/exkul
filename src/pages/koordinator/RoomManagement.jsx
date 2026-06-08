@@ -351,12 +351,6 @@ const RoomManagement = () => {
                   <th className="px-6 py-4 text-sm font-semibold text-gray-900 border-t border-b border-gray-200 w-[15%]">
                     Capacity
                   </th>
-                  <th className="px-6 py-4 text-sm font-semibold text-gray-900 border-t border-b border-gray-200 w-[20%]">
-                    Assigned To
-                  </th>
-                  <th className="px-6 py-4 text-sm font-semibold text-gray-900 border-t border-b border-gray-200 w-[20%]">
-                    Status
-                  </th>
                   <th className="px-6 py-4 text-sm font-semibold text-gray-900 border-r border-t border-b border-gray-200 rounded-tr-2xl rounded-br-2xl text-center w-[5%]">
                     Action
                   </th>
@@ -374,15 +368,6 @@ const RoomManagement = () => {
                       </span>
                     </td>
                     <td className="px-6 py-5 text-sm text-gray-500 font-normal">{room.capacity}</td>
-                    <td className="px-6 py-5 text-sm text-gray-600 font-normal">{room.assigned}</td>
-                    <td className="px-6 py-5">
-                      <span
-                        className={`px-4 py-1.5 rounded-full text-xs font-medium inline-block whitespace-nowrap ${getStatusStyle(room.status)}`}
-                      >
-                        {room.status}
-                      </span>
-                    </td>
-
                     <td className="px-6 py-5 flex justify-center relative">
                       <button
                         onClick={() => setOpenActionMenuId(openActionMenuId === room.id ? null : room.id)}

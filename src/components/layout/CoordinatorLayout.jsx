@@ -170,10 +170,6 @@ const CoordinatorLayout = () => {
 
             <div className="flex flex-col gap-1 mt-auto pb-6 shrink-0">
               <span className="px-8 text-xs font-normal text-gray-400 mb-2 shrink-0">Others</span>
-              <a href="#" className="flex items-center gap-3 mx-4 px-4 py-3 text-gray-500 hover:bg-gray-50 hover:text-gray-900 rounded-xl transition-colors shrink-0">
-                <Settings size={20} />
-                <span className="text-sm font-normal">Settings</span>
-              </a>
               <button onClick={() => navigate('/login')} className="flex items-center gap-3 mx-4 px-4 py-3 hover:bg-red-50 rounded-xl transition-colors mt-1 w-full text-left cursor-pointer shrink-0">
                 <LogOut size={20} className="text-[#C1200C]" />
                 <span className="text-sm font-normal text-gray-500">Sign Out</span>
