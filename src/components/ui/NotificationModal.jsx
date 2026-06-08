@@ -1,12 +1,13 @@
 import React from 'react';
+import { createPortal } from 'react-dom';
 import { CheckCircle2, XCircle, AlertCircle, Info, Trash } from 'lucide-react';
 
-const NotificationModal = ({ 
-  isOpen, 
-  onClose, 
+const NotificationModal = ({
+  isOpen,
+  onClose,
   type = 'success',
-  title, 
-  message, 
+  title,
+  message,
   buttonText = "Return",
   onButtonClick
 }) => {
@@ -14,7 +15,7 @@ const NotificationModal = ({
 
   const config = {
     success: {
-      bgClass: 'bg-[#F0FDF4]', 
+      bgClass: 'bg-[#F0FDF4]',
       icon: <CheckCircle2 size={36} color="white" fill="#22C55E" strokeWidth={1.5} />
     },
     error: {
@@ -37,8 +38,10 @@ const NotificationModal = ({
 
   const currentConfig = config[type] || config.success;
 
-  return (
-    <div className="fixed inset-0 bg-black/40 z-100 flex items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300">
+  const modalRoot = document.getElementById('modal-root') || document.body;
+
+  return createPortal(
+    <div className="fixed inset-0 bg-black/40 z-99999 flex items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300">
       <div className="bg-white rounded-3xl w-full max-w-100 shadow-2xl flex flex-col text-center overflow-hidden transform transition-all duration-300 scale-100 opacity-100">
         <div className="p-8 pb-7 flex flex-col items-center">
           <div className={`w-16 h-16 rounded-2xl flex items-center justify-center mb-6 ${currentConfig.bgClass}`}>
@@ -60,9 +63,9 @@ const NotificationModal = ({
             {buttonText}
           </button>
         </div>
-
       </div>
-    </div>
+    </div>,
+    modalRoot
   );
 };
 

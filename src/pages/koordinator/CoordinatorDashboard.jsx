@@ -1,7 +1,7 @@
 import React from 'react';
-import { 
-  Building2, Users, Rocket, PieChart, Calendar, 
-  Search, ChevronDown, ChevronLeft, ChevronRight 
+import {
+  Building2, Users, Rocket, PieChart, Calendar,
+  Search, ChevronDown, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 
@@ -46,13 +46,13 @@ const CoordinatorDashboard = () => {
 
       {/* Top Cards */}
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
-        
+
         {/* Box 1: Extracurricular */}
         <div className="bg-[#F8F9FA] rounded-3xl border border-gray-200 p-2">
           <h2 className="text-[16px] font-semibold text-gray-900 tracking-tight mb-3 pl-5">Extracurricular</h2>
-          
+
           <div className="bg-white rounded-2xl border border-gray-200 flex items-stretch shadow-sm">
-            
+
             <div className="flex-1 p-5 border-r border-gray-200 flex flex-col justify-between">
               <div className="flex items-center gap-3 text-gray-900 mb-6">
                 <div className="w-10 h-10 border border-gray-200 rounded-xl flex items-center justify-center text-gray-400">
@@ -63,7 +63,7 @@ const CoordinatorDashboard = () => {
               <span className="text-4xl font-semibold text-gray-900 tracking-tight mb-2">15</span>
               <span className="text-xs text-gray-400 font-medium">Active Programs</span>
             </div>
-            
+
             <div className="flex-1 p-5 flex flex-col justify-between">
               <div className="flex items-center gap-3 text-gray-900 mb-6">
                 <div className="w-10 h-10 border border-gray-200 rounded-xl flex items-center justify-center text-gray-400">
@@ -81,9 +81,9 @@ const CoordinatorDashboard = () => {
         {/* Box 2: Management */}
         <div className="bg-[#F8F9FA] rounded-3xl border border-gray-200 p-2">
           <h2 className="text-[16px] font-semibold text-gray-900 tracking-tight mb-3 pl-5">Management</h2>
-          
+
           <div className="bg-white rounded-2xl border border-gray-200 flex items-stretch shadow-sm">
-            
+
             <div className="flex-1 p-5 border-r border-gray-200 flex flex-col justify-between">
               <div className="flex items-center gap-3 text-gray-900 mb-6">
                 <div className="w-10 h-10 border border-gray-200 rounded-xl flex items-center justify-center text-gray-400">
@@ -94,7 +94,7 @@ const CoordinatorDashboard = () => {
               <span className="text-4xl font-semibold text-gray-900 tracking-tight mb-2">20</span>
               <span className="text-xs text-gray-400 font-medium">Active Mentors</span>
             </div>
-            
+
             <div className="flex-1 p-5 flex flex-col justify-between">
               <div className="flex items-center gap-3 text-gray-900 mb-6">
                 <div className="w-10 h-10 border border-gray-200 rounded-xl flex items-center justify-center text-gray-400">
@@ -113,14 +113,14 @@ const CoordinatorDashboard = () => {
 
       {/* Middle Section */}
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
-        
+
         {/* Chart */}
         <div className="bg-white rounded-3xl border border-gray-100 p-6 shadow-sm xl:col-span-2 flex flex-col">
           <div className="flex items-center gap-3 mb-8">
             <div className="p-2 border border-gray-100 rounded-lg text-gray-400"><PieChart size={16} /></div>
             <h2 className="text-base font-semibold text-gray-900 tracking-tight">Extracurricular Members Overview</h2>
           </div>
-          
+
           <div className="flex-1 w-full min-h-62.5">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={chartData} margin={{ top: 20, right: 10, left: -20, bottom: 0 }} barCategoryGap="0%" barGap={0}>
@@ -134,7 +134,7 @@ const CoordinatorDashboard = () => {
                 <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#9CA3AF' }} dy={10} />
                 <YAxis axisLine={false} tickLine={false} tick={{ fontSize: 11, fill: '#9CA3AF' }} dx={-10} ticks={[0, 10, 20, 30, 40, 50]} domain={[0, 50]} />
                 <Tooltip cursor={{ fill: 'transparent' }} />
-                
+
                 <Bar dataKey="value" shape={<CustomBarShape />}>
                   {chartData.map((entry, index) => (
                     <Cell key={`cell-${index}`} fill="url(#colorRed)" />
@@ -168,18 +168,18 @@ const CoordinatorDashboard = () => {
 
       {/* Bottom Section */}
       <div className="flex flex-col gap-6 mt-4">
-        
+
         {/* Filters */}
         <div className="flex items-center justify-between">
           <div className="relative w-72">
             <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
-            <input 
-              type="text" 
-              placeholder="Search..." 
+            <input
+              type="text"
+              placeholder="Search..."
               className="w-full pl-11 pr-4 py-2.5 border border-gray-200 rounded-xl text-sm focus:outline-none focus:ring-1 focus:ring-[#C1200C] focus:border-[#C1200C] transition-all"
             />
           </div>
-          
+
           <div className="flex items-center border border-gray-200 rounded-xl overflow-hidden bg-white">
             <button className="flex items-center gap-3 px-5 py-2.5 text-sm font-medium text-gray-500 hover:bg-gray-50 border-r border-gray-200 transition-colors">
               All Extracurricular <ChevronDown size={14} className="text-gray-400" />
@@ -192,13 +192,21 @@ const CoordinatorDashboard = () => {
 
         {/* Table */}
         <div className="w-full overflow-x-auto">
-          <table className="w-full text-left border-collapse">
+          <table className="w-full text-left border-separate border-spacing-0">
             <thead>
               <tr className="bg-[#F8F9FA]">
-                <th className="px-6 py-5 text-sm font-semibold text-gray-900 rounded-l-2xl">Extracurricular</th>
-                <th className="px-6 py-5 text-sm font-semibold text-gray-900">Day</th>
-                <th className="px-6 py-5 text-sm font-semibold text-gray-900">Time</th>
-                <th className="px-6 py-5 text-sm font-semibold text-gray-900 rounded-r-2xl">Location</th>
+                <th className="px-6 py-4 text-sm font-semibold text-gray-900 border-l border-t border-b border-gray-200 rounded-tl-2xl rounded-bl-2xl">
+                  Extracurricular
+                </th>
+                <th className="px-6 py-4 text-sm font-semibold text-gray-900 border-t border-b border-gray-200">
+                  Day
+                </th>
+                <th className="px-6 py-4 text-sm font-semibold text-gray-900 border-t border-b border-gray-200">
+                  Time
+                </th>
+                <th className="px-6 py-4 text-sm font-semibold text-gray-900 border-r border-t border-b border-gray-200 rounded-tr-2xl rounded-br-2xl">
+                  Location
+                </th>
               </tr>
             </thead>
             <tbody>
