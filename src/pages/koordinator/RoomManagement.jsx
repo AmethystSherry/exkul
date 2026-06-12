@@ -44,7 +44,6 @@ const RoomManagement = () => {
 
   // State for Filter and Pagination
   const [filterType, setFilterType] = useState('All Type');
-  const [filterStatus, setFilterStatus] = useState('All Status');
   const [openFilter, setOpenFilter] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const ITEMS_PER_PAGE = 10;
@@ -72,8 +71,7 @@ const RoomManagement = () => {
   const filteredData = data.filter(row => {
     const matchesSearch = row.name.toLowerCase().includes(searchQuery.toLowerCase());
     const matchesType = filterType === 'All Type' || row.type === filterType;
-    const matchesStatus = filterStatus === 'All Status' || row.status === filterStatus;
-    return matchesSearch && matchesType && matchesStatus;
+    return matchesSearch && matchesType;
   });
 
   // Pagination Logic
@@ -90,7 +88,6 @@ const RoomManagement = () => {
 
   const handleFilterChange = (filterTypeParam, value) => {
     if (filterTypeParam === 'type') setFilterType(value);
-    if (filterTypeParam === 'status') setFilterStatus(value);
     setCurrentPage(1);
     setOpenFilter(null);
   };
@@ -236,7 +233,7 @@ const RoomManagement = () => {
     );
   };
 
-  const isFormValid = roomName.trim() !== '' && !selectedType.includes('Select') && roomCapacity.trim() !== '' && !selectedStatus.includes('Select');
+  const isFormValid = roomName.trim() !== '' && !selectedType.includes('Select') && roomCapacity.trim() !== '';
 
   return (
     <div className="p-8 pt-4 flex flex-col flex-1 gap-6 relative min-h-screen bg-white font-sans">
@@ -259,7 +256,7 @@ const RoomManagement = () => {
             <div className="relative">
               <button
                 onClick={() => setOpenFilter(openFilter === 'type' ? null : 'type')}
-                className={`flex items-center gap-3 px-5 py-2.5 text-sm font-medium transition-colors cursor-pointer rounded-l-xl border bg-white ${openFilter === 'type' ? 'border-[#C1200C] text-gray-500 z-10 relative' : 'border-gray-200 text-gray-500 hover:bg-gray-50 relative z-0'}`}
+                className={`flex items-center gap-3 px-5 py-2.5 text-sm font-medium transition-colors cursor-pointer rounded-xl border bg-white ${openFilter === 'type' ? 'border-[#C1200C] text-gray-500 z-10 relative' : 'border-gray-200 text-gray-500 hover:bg-gray-50 relative z-0'}`}
               >
                 <span className="truncate max-w-25">{filterType}</span>
                 <ChevronDown size={14} className="text-gray-400 shrink-0" />
@@ -291,40 +288,6 @@ const RoomManagement = () => {
               )}
             </div>
 
-            <div className="relative -ml-px">
-              <button
-                onClick={() => setOpenFilter(openFilter === 'status' ? null : 'status')}
-                className={`flex items-center gap-3 px-5 py-2.5 text-sm font-medium transition-colors cursor-pointer rounded-r-xl border bg-white ${openFilter === 'status' ? 'border-[#C1200C] text-gray-500 z-10 relative' : 'border-gray-200 text-gray-500 hover:bg-gray-50 relative z-0'}`}
-              >
-                <span className="truncate max-w-25">{filterStatus}</span>
-                <ChevronDown size={14} className="text-gray-400 shrink-0" />
-              </button>
-
-              {openFilter === 'status' && (
-                <>
-                  <div className="fixed inset-0 z-10" onClick={() => setOpenFilter(null)} />
-                  <div className="absolute right-0 top-full mt-2 w-48 bg-white border border-gray-100 rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] z-20 py-3 flex flex-col gap-1">
-                    <div
-                      onClick={() => handleFilterChange('status', 'All Status')}
-                      className={`px-5 py-2 text-sm cursor-pointer transition-colors ${filterStatus === 'All Status' ? 'text-[#C1200C] font-medium' : 'text-gray-600 hover:bg-gray-50'}`}
-                    >
-                      All Status
-                    </div>
-                    {["Available", "In Use", "Unavailable", "Maintenance"].map((status, idx) => (
-                      <div
-                        key={idx}
-                        onClick={() => handleFilterChange('status', status)}
-                        className="px-5 py-2 text-sm cursor-pointer transition-colors hover:bg-gray-50"
-                      >
-                        <span className={`px-4 py-1.5 rounded-lg text-xs font-semibold inline-block ${getStatusStyle(status)}`}>
-                          {status}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </>
-              )}
-            </div>
           </div>
 
           <button
@@ -443,7 +406,7 @@ const RoomManagement = () => {
           </div>
           <h3 className="text-xl font-bold text-gray-900 mb-2 tracking-tight">No Rooms Found</h3>
           <p className="text-sm text-gray-400 text-center max-w-sm leading-relaxed">
-            {searchQuery || filterType !== 'All Type' || filterStatus !== 'All Status'
+            {searchQuery || filterType !== 'All Type'
               ? 'No rooms match your filter criteria.'
               : 'There are no rooms available yet. Start by adding a new room to the system.'}
           </p>
@@ -500,29 +463,6 @@ const RoomManagement = () => {
                 value={roomCapacity}
                 onChange={(e) => setRoomCapacity(e.target.value)}
                 className="w-full px-4 py-2.5 border border-gray-200 rounded-xl text-sm text-gray-900 focus:outline-none focus:ring-1 focus:ring-[#C1200C] focus:border-[#C1200C] placeholder:text-gray-400 transition-colors"
-              />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-2 gap-4">
-            <div className="flex flex-col gap-2">
-              <label className="text-sm font-medium text-gray-800">Assigned To</label>
-              <CustomSelect
-                value={selectedAssigned}
-                type="assigned"
-                placeholder="Assigned to"
-                options={["Basketball", "Choir", "Coding Club", "PMR", "Futsal", "English Club", "Robotics"]}
-              />
-              <span className="text-[13px] text-gray-400">Optional</span>
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <label className="text-sm font-medium text-gray-800">Status</label>
-              <CustomSelect
-                value={selectedStatus}
-                type="status"
-                placeholder="Select Status"
-                options={["Available", "In Use", "Unavailable", "Maintenance"]}
               />
             </div>
           </div>
